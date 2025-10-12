@@ -6,17 +6,20 @@
 
 <div class="topbar">
   <div class="container nav">
-    <a class="brand" href="/"><span class="logo"></span> Valley Mix Concrete</a>
+    <a class="brand" href="/">
+      <img src="/assets/vmc-logo.png" alt="Valley Mix Concrete Logo" onerror="this.src='/assets/logo.svg'">
+      Valley Mix Concrete
+    </a>
     <div class="hamburger" aria-label="Menu" role="button" tabindex="0">
       <span></span><span></span><span></span>
     </div>
     <div class="navlinks">
-      <a href="/">Home</a>
-      <a href="/who-we-are.html">Who We Are</a>
-      <a href="/services.html">Products & Services</a>
-      <a href="/projects.html">Projects</a>
-      <a href="/quote.html">Get a Quote</a>
-      <a href="/apply.html">Apply</a>
+      <a href="/"></a>
+      <a href="/who-we-are.html"></a>
+      <a href="/services.html"></a>
+      <a href="/projects.html"></a>
+      <a href="/quote.html"></a>
+      <a href="/apply.html"></a>
     </div>
     <div class="lang-social">
       <div class="lang-toggle">
@@ -39,11 +42,12 @@
 </div>
 
 <section class="section">
-  <h2 data-i18n="ctaHeader">Let's Build</h2>
-  <p data-i18n="ctaBody">Tell us your yardage, PSI, address and date — we’ll schedule your pour and show up on time.</p>
+  <h2 data-i="form_h1">Tell Us About Your Pour</h2>
+  <p data-i="form_intro">We’ll confirm availability and schedule your pour.</p>
   <div id="form-notice" class="notice" aria-live="polite"></div>
   <form id="quote-form" class="form">
-    <select name="psi" required aria-label="PSI">
+    <label for="psi" data-i="form_psi_label">PSI</label>
+    <select id="psi" name="psi" required aria-label="PSI">
       <option value="" disabled selected>PSI</option>
       <option value="2500">2500 PSI</option>
       <option value="3000">3000 PSI</option>
@@ -51,19 +55,17 @@
       <option value="4000">4000 PSI</option>
       <option value="4500">4500 PSI</option>
     </select>
-    <input type="text" name="name" placeholder="Name" data-i18n="formName" required>
-    <input type="email" name="email" placeholder="Email" data-i18n="formEmail" required>
-    <textarea name="message" rows="6" placeholder="Details (address, date/time)" data-i18n="formMsg"></textarea>
-    <button class="btn" type="submit" data-i18n="formSend">Send Request</button>
+    <input type="text" name="name" placeholder="Name" data-i="form_name" required>
+    <input type="email" name="email" placeholder="Email" data-i="form_email" required>
+    <textarea name="message" rows="6" placeholder="Details (address, date/time)" data-i="form_msg"></textarea>
+    <button class="btn" type="submit" data-i="form_send">Send Request</button>
   </form>
-  <p class="sub" style="margin-top:8px">Prefer WhatsApp? <a href="https://wa.me/19565611288" target="_blank" rel="noopener">+1 (956) 561-1288</a></p>
 </section>
 
 <section class="section">
-  <h2>Service Area</h2>
+  <h2 data-i="map_h1">Service Area</h2>
   <div class="map-wrap">
-    <iframe
-      src="https://www.google.com/maps?q=6005+FM+1732,+Brownsville,+TX+78520&output=embed"
+    <iframe src="https://www.google.com/maps?q=6005+FM+1732,+Brownsville,+TX+78520&output=embed"
       width="100%" height="360" style="border:0;" allowfullscreen="" loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
@@ -73,18 +75,16 @@
 <footer class="footer">
   <div class="container">
     <div style="margin-bottom:8px;">
-      <strong data-i18n="contact">Contact</strong> · <a href="tel:+19565611288" data-i18n="phone">(956) 561-1288</a> · <a href="mailto:sales@valleymixconcrete.com" data-i18n="email">sales@valleymixconcrete.com</a> · <span data-i18n="address">6005 FM 1732, Brownsville, TX 78520</span>
+      <strong data-i="contact">Contact</strong> · <a href="tel:+19565611288" data-i="phone">(956) 561-1288</a> · <a href="mailto:sales@valleymixconcrete.com" data-i="email">sales@valleymixconcrete.com</a> · <span data-i="address">6005 FM 1732, Brownsville, TX 78520</span>
     </div>
-    <small data-i18n="copy">© Valley Mix Concrete. All rights reserved.</small>
+    <small data-i="copyright">© Valley Mix Concrete. All rights reserved.</small>
   </div>
 </footer>
-
 <div class="mobile-bar">
   <div class="container">
-    <a class="btn" href="tel:+19565611288" data-i18n="call">Call Now</a>
-    <a class="btn secondary" href="/quote.html" data-i18n="quote">Get a Quote</a>
+    <a class="btn" href="tel:+19565611288" data-i="call">Call Now</a>
+    <a class="btn secondary" href="/quote.html" data-i="quote_cta">Get a Quote</a>
   </div>
 </div>
 
-<script src="/script.js"></script>
-</body></html>
+<script src="/script.js"></script></body></html>
