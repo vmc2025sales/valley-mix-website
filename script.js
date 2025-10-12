@@ -1,17 +1,26 @@
 
-const strings = {
+// Simple i18n + nav highlighter
+const STR = {
   en: {
-    slogan: "Exact Yard. On Site. On Time.",
-    sub: "Fresh volumetric concrete mixed at your job site. Order exactly what you need—from 1 yard to as many as you like.",
-    callNow: "Call Now",
-    getQuote: "Get a Quote",
-    aboutTitle:"Why Valley Mix",
-    aboutBody:"We deliver exact-yard concrete with modern volumetric mixer trucks. No waste, no hot loads, and no 5AM concrete rush. Pay only for what you use.",
-    servicesTitle:"Services",
-    s1:"Residential & Commercial Delivery",
-    s2:"Volumetric Concrete (2500–4500+ PSI)",
-    s3:"Driveways, Slabs, Foundations, Sidewalks",
-    contactTitle:"Contact",
+    slogan:"Exact Yard. On Site. On Time.",
+    sub:"Fresh volumetric concrete mixed at your job site. Order exactly what you need — from 1 yard to any size.",
+    call:"Call Now",
+    quote:"Get a Quote",
+    k1:"On‑Site Volumetric Mixing",
+    k2:"Exact-Yard, Zero Waste",
+    k3:"Same‑Day Scheduling",
+    k4:"RGV & South Texas",
+    aboutTitle:"Who We Are",
+    aboutBody:"Valley Mix Concrete delivers exact-yard volumetric concrete across the Rio Grande Valley. Fresh concrete mixed on-site so you only pay for what you use. Professional drivers, reliable scheduling, and clean pours.",
+    svcTitle:"Products & Services",
+    s1:"Custom Concrete Mixes",
+    s2:"Ready Mix Delivery (Volumetric)",
+    s3:"Concrete Pumping Partners",
+    s4:"On‑Site Technical Support",
+    s5:"Sustainable Practices",
+    ctaHeader:"Let's Build",
+    ctaBody:"Tell us your yardage, PSI, address and date — we’ll schedule your pour and show up on time.",
+    contact:"Contact",
     address:"6005 FM 1732, Brownsville, TX 78520",
     phone:"(956) 561-1288",
     email:"sales@valleymixconcrete.com",
@@ -19,72 +28,78 @@ const strings = {
     formEmail:"Email",
     formMsg:"Tell us about your pour (yardage, PSI, address, date/time)",
     formSend:"Open Email to Send",
-    copyright:"© Valley Mix Concrete. All rights reserved."
+    copy:"© Valley Mix Concrete. All rights reserved."
   },
   es: {
-    slogan: "Yarda Exacta. En Sitio. A Tiempo.",
-    sub: "Concreto fresco con mezcladoras volumétricas directamente en tu obra. Pide exactamente lo que necesitas—desde 1 yarda hasta la cantidad que quieras.",
-    callNow: "Llamar Ahora",
-    getQuote: "Solicitar Cotización",
-    aboutTitle:"¿Por qué Valley Mix?",
-    aboutBody:"Entregamos concreto a yarda exacta con camiones mezcladores volumétricos modernos. Sin desperdicio, sin cargas calientes y sin madrugar a las 5 AM. Solo pagas lo que usas.",
-    servicesTitle:"Servicios",
-    s1:"Entregas Residenciales y Comerciales",
-    s2:"Concreto Volumétrico (2500–4500+ PSI)",
-    s3:"Cocheras, Losas, Cimentaciones y Banquetas",
-    contactTitle:"Contacto",
+    slogan:"Yarda Exacta. En Sitio. A Tiempo.",
+    sub:"Concreto fresco con mezcladoras volumétricas directamente en tu obra. Pide exactamente lo que necesitas — desde 1 yarda hasta lo que requieras.",
+    call:"Llamar Ahora",
+    quote:"Solicitar Cotización",
+    k1:"Mezcla Volumétrica en Sitio",
+    k2:"Yarda Exacta, Cero Desperdicio",
+    k3:"Programación el Mismo Día",
+    k4:"RGV y Sur de Texas",
+    aboutTitle:"Quiénes Somos",
+    aboutBody:"Valley Mix Concrete entrega concreto a yarda exacta en todo el Valle del Río Grande. Concreto fresco mezclado en obra: pagas solo lo que usas. Operadores profesionales, programación confiable y colados limpios.",
+    svcTitle:"Productos y Servicios",
+    s1:"Mezclas Personalizadas",
+    s2:"Entrega de Concreto (Volumétrico)",
+    s3:"Aliados en Bombeo",
+    s4:"Soporte Técnico en Sitio",
+    s5:"Prácticas Sustentables",
+    ctaHeader:"Construyamos",
+    ctaBody:"Cuéntanos yardaje, PSI, dirección y fecha — agendamos tu colado y llegamos a tiempo.",
+    contact:"Contacto",
     address:"6005 FM 1732, Brownsville, TX 78520",
     phone:"(956) 561-1288",
     email:"sales@valleymixconcrete.com",
     formName:"Nombre",
     formEmail:"Correo electrónico",
     formMsg:"Cuéntanos de tu colado (yardas, PSI, dirección, fecha/hora)",
-    formSend:"Abrir Correo para Enviar",
-    copyright:"© Valley Mix Concrete. Todos los derechos reservados."
+    formSend:"Abrir Correo",
+    copy:"© Valley Mix Concrete. Todos los derechos reservados."
   }
 };
-
-const $ = (sel)=>document.querySelector(sel);
-const setLang = (lang)=>{
-  const t = strings[lang];
-  $('[data-slogan]').textContent = t.slogan;
-  $('[data-sub]').textContent = t.sub;
-  document.querySelectorAll('[data-call]').forEach(el=>el.textContent=t.callNow);
-  document.querySelectorAll('[data-quote]').forEach(el=>el.textContent=t.getQuote);
-  $('[data-about-title]').textContent = t.aboutTitle;
-  $('[data-about-body]').textContent = t.aboutBody;
-  $('[data-services-title]').textContent = t.servicesTitle;
-  $('[data-s1]').textContent = t.s1;
-  $('[data-s2]').textContent = t.s2;
-  $('[data-s3]').textContent = t.s3;
-  $('[data-contact-title]').textContent = t.contactTitle;
-  $('[data-address]').textContent = t.address;
-  $('[data-phone]').textContent = t.phone;
-  $('[data-email]').textContent = t.email;
-  $('[name=name]').placeholder = t.formName;
-  $('[name=email]').placeholder = t.formEmail;
-  $('[name=message]').placeholder = t.formMsg;
-  $('[data-send]').textContent = t.formSend;
-  $('[data-copy]').textContent = t.copyright;
+function setLang(lang){
+  const t = STR[lang];
+  document.documentElement.lang = lang;
+  for(const [k,v] of Object.entries(t)){
+    document.querySelectorAll(`[data-i18n="${k}"]`).forEach(el=>{
+      if(el.tagName==="INPUT" || el.tagName==="TEXTAREA"){
+        el.placeholder = v;
+      } else {
+        el.textContent = v;
+      }
+    });
+  }
   document.querySelectorAll('.lang-toggle button').forEach(b=>b.classList.remove('active'));
   document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
-  document.documentElement.lang = lang;
-};
-
-window.addEventListener('DOMContentLoaded', ()=>{
-  setLang('en');
+}
+function initCommon(){
+  // language toggles
   document.querySelectorAll('.lang-toggle button').forEach(btn=>{
     btn.addEventListener('click', ()=> setLang(btn.dataset.lang));
   });
-
-  // mailto builder
+  setLang('en');
+  // mailto form
   const form = document.querySelector('#quote-form');
-  form.addEventListener('submit', (e)=>{
-    e.preventDefault();
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const msg = form.message.value.trim();
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${msg}`);
-    window.location.href = `mailto:sales@valleymixconcrete.com?subject=Concrete Quote Request&body=${body}`;
+  if(form){
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const msg = form.message.value.trim();
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${msg}`);
+      window.location.href = `mailto:sales@valleymixconcrete.com?subject=Concrete Quote&body=${body}`;
+    });
+  }
+  // highlight active nav
+  const path = location.pathname.replace(/\/+$/,'/');
+  document.querySelectorAll('.navlinks a').forEach(a=>{
+    if(a.getAttribute('href')===path || (a.getAttribute('href')==='/' && path==='/')){
+      a.classList.add('active');
+      a.style.borderColor = '#374151';
+    }
   });
-});
+}
+document.addEventListener('DOMContentLoaded', initCommon);
