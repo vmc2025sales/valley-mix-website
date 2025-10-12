@@ -34,14 +34,15 @@ function init(){
   // i18n
   setLang("en");
   document.querySelectorAll(".lang-toggle button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
-  // menu hover + click
+  // menu hover + click (desktop + touch)
   const topbar=document.querySelector(".topbar");
   const burger=document.querySelector(".hamburger");
-  burger.addEventListener("click",()=> topbar.classList.toggle("menu-open"));
-  // close on outside click
-  document.addEventListener("click", (e)=>{
-    if(!topbar.contains(e.target)) topbar.classList.remove("menu-open");
-  });
+  const navwrap=document.querySelector(".navwrap");
+  burger.setAttribute("aria-expanded","false");
+  function open(){ topbar.classList.add("menu-open"); burger.setAttribute("aria-expanded","true"); }
+  function close(){ topbar.classList.remove("menu-open"); burger.setAttribute("aria-expanded","false"); }
+  burger.addEventListener("click",(e)=>{ e.stopPropagation(); if(topbar.classList.contains("menu-open")) close(); else open(); });
+  document.addEventListener("click",(e)=>{ if(!topbar.contains(e.target)) close(); });
   // nav labels
   const keys=["nav_home","nav_who","nav_services","nav_projects","nav_quote","nav_apply"];
   document.querySelectorAll(".navlinks a").forEach((a,i)=> a.setAttribute("data-i", keys[i]));

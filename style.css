@@ -7,37 +7,49 @@
 body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--text);background:var(--bg);line-height:1.6}
 a{color:var(--text);text-decoration:none}
 .container{max-width:1180px;margin:0 auto;padding:20px;position:relative;z-index:1}
-/* Header with universal hamburger */
-.topbar{position:sticky;top:0;z-index:50;background:#ffffffcc;backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+
+/* Header */
+.topbar{position:sticky;top:0;z-index:60;background:#ffffffcc;backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
 .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.3px}
-.brand img{height:40px;width:auto}
-.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:1px solid var(--border);border-radius:10px;background:#fff}
+.brand img{height:46px;width:auto;display:block}
+.hgroup{display:flex;align-items:center;gap:12px;margin-left:auto}
+.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:#fff;transition:all .2s ease}
+.hamburger:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.06)}
 .hamburger span{width:24px;height:2px;background:#111;border-radius:2px}
-/* Dropdown menu */
-.navlinks{position:absolute;top:64px;right:20px;display:none;flex-direction:column;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:0 10px 24px rgba(0,0,0,.08);min-width:240px;overflow:hidden}
-.navlinks a{padding:12px 14px;border-top:1px solid var(--border)}
+
+/* Dropdown menu (hover and click) */
+.navwrap{position:relative}
+.navlinks{position:absolute;top:64px;right:0;display:flex;flex-direction:column;gap:0;
+  background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:0 14px 30px rgba(0,0,0,.12);
+  min-width:260px;opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .15s ease, transform .15s ease}
+.navlinks a{padding:14px 16px;border-top:1px solid var(--border);font-size:16px}
 .navlinks a:first-child{border-top:none}
 .navlinks a:hover{background:#f8fafc}
-/* show on hover or when toggled */
-.menu-open .navlinks{display:flex}
-.topbar:hover .navlinks{display:flex}
-.lang-social{display:flex;align-items:center;gap:10px;margin-left:12px}
+
+/* open states */
+.menu-open .navlinks,
+.navwrap:hover .navlinks{opacity:1;transform:translateY(0);pointer-events:auto}
+
+/* Language toggle */
 .lang-toggle{display:flex;gap:6px}
 .lang-toggle button{background:#fff;border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:10px;cursor:pointer}
 .lang-toggle button.active{border-color:var(--accent)}
-.social a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;border:1px solid var(--border);background:#fff}
-/* Hero uses truck image if present */
+
+/* Hero */
 .hero{position:relative;border-radius:24px;overflow:hidden;margin-top:16px;min-height:520px;display:flex;align-items:center;background:#fff;border:1px solid var(--border)}
 .hero::before{content:"";position:absolute;inset:0;background:url('/assets/trucks/truck1.jpg') center/cover no-repeat;filter:brightness(72%)}
 .hero .overlay{position:absolute;inset:0;background:linear-gradient(to right, rgba(255,255,255,0.92), rgba(255,255,255,0.45) 55%, rgba(255,255,255,0.15))}
-.hero-inner{position:relative;padding:42px;max-width:760px}
-.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.35);font-weight:700;color:#991b1b}
-h1{font-size:42px;margin:12px 0}
+.hero-inner{position:relative;padding:42px;max-width:820px}
+.badge-logo{display:inline-flex;align-items:center;gap:12px;background:#fff;border:1px solid #e7e7e7;border-radius:999px;padding:8px 16px;box-shadow:0 10px 24px rgba(0,0,0,.06)}
+.badge-logo img{height:42px;width:auto}
+h1{font-size:48px;margin:16px 0 10px}
 .sub{color:var(--muted);font-size:18px;margin-bottom:22px}
 .cta{display:flex;gap:12px;flex-wrap:wrap}
 .btn{background:linear-gradient(90deg,var(--accent),var(--accent2));border:none;color:#fff;padding:12px 16px;border-radius:12px;font-weight:800;cursor:pointer}
 .btn.secondary{background:#fff;border:1px solid var(--border);color:#111827}
+
+/* Sections */
 .section{background:var(--panel);border:1px solid var(--border);margin-top:28px;border-radius:22px;padding:22px}
 .section h2{margin:0 0 8px;font-size:26px}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -46,22 +58,30 @@ h1{font-size:42px;margin:12px 0}
 .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
 .kpi{background:#fff;border:1px solid var(--border);border-radius:16px;padding:16px;text-align:center}
 .kpi h3{margin:0;font-size:20px}
+
+/* Gallery */
 .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.gallery img{width:100%;height:220px;object-fit:cover;border-radius:14px;border:1px solid var(--border)}
+.gallery img{width:100%;height:240px;object-fit:cover;border-radius:14px;border:1px solid var(--border)}
 figure{margin:0}
 figcaption{font-size:14px;color:#374151;margin-top:6px}
+
+/* Form */
 .form{display:grid;gap:12px;max-width:660px}
 input, textarea, select{background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px;color:var(--text);font-size:16px}
 .notice{padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:#f5f5f5;color:#111}
+
+/* Map + Footer */
 .map-wrap{border:1px solid var(--border);border-radius:18px;overflow:hidden;background:#fff}
 .footer{color:#4b5563;text-align:center;padding:32px 12px;margin-top:24px;border-top:1px solid var(--border);background:#fff}
-.mobile-bar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;border-top:1px solid var(--border);padding:10px}
+
+/* Mobile */
+.mobile-bar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:50;background:#fff;border-top:1px solid var(--border);padding:10px}
 .mobile-bar .container{display:flex;gap:10px}
 .mobile-bar .btn{flex:1;text-align:center}
 @media(max-width:980px){
   .gallery{grid-template-columns:1fr}
   .grid-3,.grid-2,.kpis{grid-template-columns:1fr}
-  h1{font-size:34px}
+  h1{font-size:36px}
   .hero-inner{padding:24px}
   body{padding-bottom:64px}
   .mobile-bar{display:block}
