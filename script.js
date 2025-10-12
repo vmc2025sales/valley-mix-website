@@ -31,9 +31,9 @@ function setLang(lang){
   document.querySelector(`.lang-toggle button[data-lang='${lang}']`).classList.add("active");
 }
 function init(){
-  // i18n
-  setLang("en");
-  document.querySelectorAll(".lang-toggle button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+  // set default lang key (will update after keys attach)
+  let current='en';
+  document.querySelectorAll(".lang-toggle button").forEach(b=>b.addEventListener("click",()=>{current=b.dataset.lang; setLang(current);}));
   // menu hover + click (desktop + touch)
   const topbar=document.querySelector(".topbar");
   const burger=document.querySelector(".hamburger");
