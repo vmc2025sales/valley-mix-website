@@ -5,27 +5,29 @@
 }
 *{box-sizing:border-box} html,body{margin:0;padding:0}
 body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--text);background:var(--bg);line-height:1.6}
-/* Watermark */
-body::after{content:"";position:fixed;inset:0;pointer-events:none;
-  background-image:url('/assets/vmc-logo.png');
-  background-repeat:no-repeat;background-position:50% 60%;
-  background-size:min(60vw,720px) auto;opacity:.05;z-index:0}
 a{color:var(--text);text-decoration:none}
 .container{max-width:1180px;margin:0 auto;padding:20px;position:relative;z-index:1}
-.topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+/* Header with universal hamburger */
+.topbar{position:sticky;top:0;z-index:50;background:#ffffffcc;backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
 .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.3px}
 .brand img{height:40px;width:auto}
-.navlinks{display:flex;gap:12px;flex-wrap:wrap}
-.navlinks a{padding:10px 12px;border-radius:10px;border:1px solid transparent}
-.navlinks a:hover{border-color:var(--border);background:#f5f5f5}
-.hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer}
+.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:1px solid var(--border);border-radius:10px;background:#fff}
 .hamburger span{width:24px;height:2px;background:#111;border-radius:2px}
-.lang-social{display:flex;align-items:center;gap:10px}
+/* Dropdown menu */
+.navlinks{position:absolute;top:64px;right:20px;display:none;flex-direction:column;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:0 10px 24px rgba(0,0,0,.08);min-width:240px;overflow:hidden}
+.navlinks a{padding:12px 14px;border-top:1px solid var(--border)}
+.navlinks a:first-child{border-top:none}
+.navlinks a:hover{background:#f8fafc}
+/* show on hover or when toggled */
+.menu-open .navlinks{display:flex}
+.topbar:hover .navlinks{display:flex}
+.lang-social{display:flex;align-items:center;gap:10px;margin-left:12px}
 .lang-toggle{display:flex;gap:6px}
 .lang-toggle button{background:#fff;border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:10px;cursor:pointer}
 .lang-toggle button.active{border-color:var(--accent)}
 .social a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;border:1px solid var(--border);background:#fff}
+/* Hero uses truck image if present */
 .hero{position:relative;border-radius:24px;overflow:hidden;margin-top:16px;min-height:520px;display:flex;align-items:center;background:#fff;border:1px solid var(--border)}
 .hero::before{content:"";position:absolute;inset:0;background:url('/assets/trucks/truck1.jpg') center/cover no-repeat;filter:brightness(72%)}
 .hero .overlay{position:absolute;inset:0;background:linear-gradient(to right, rgba(255,255,255,0.92), rgba(255,255,255,0.45) 55%, rgba(255,255,255,0.15))}
@@ -61,9 +63,6 @@ input, textarea, select{background:#fff;border:1px solid var(--border);border-ra
   .grid-3,.grid-2,.kpis{grid-template-columns:1fr}
   h1{font-size:34px}
   .hero-inner{padding:24px}
-  .navlinks{display:none;flex-direction:column;background:#fff;border:1px solid var(--border);position:absolute;top:58px;left:10px;right:10px;padding:10px;border-radius:12px}
-  .navlinks.show{display:flex}
-  .hamburger{display:flex}
   body{padding-bottom:64px}
   .mobile-bar{display:block}
 }
