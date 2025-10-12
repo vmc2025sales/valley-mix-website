@@ -1,22 +1,66 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Valley Mix Concrete</title>
-  <style>
-    body { font-family: Arial; margin: 40px; }
-    .header { display: flex; align-items: center; gap: 20px; }
-    .header img { width: 120px; border-radius: 12px; }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Valley Mix Concrete | Exact Yard · On Site · On Time</title>
+  <meta name="description" content="Exact-yard volumetric concrete delivered across the Rio Grande Valley. Fresh concrete mixed on site. Call (956) 561-1288.">
+  <link rel="icon" href="assets/logo.svg">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="header">
-    <img src="logo.jpg" alt="Valley Mix Concrete Logo" />
-    <h1>Valley Mix Concrete</h1>
+  <div class="container">
+    <nav class="nav">
+      <img src="assets/logo.svg" alt="Valley Mix Concrete Logo">
+      <div class="lang-toggle">
+        <button data-lang="en" class="active">EN</button>
+        <button data-lang="es">ES</button>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="badge">VALLEY MIX CONCRETE</div>
+        <h1 data-slogan>Exact Yard. On Site. On Time.</h1>
+        <p class="sub" data-sub>Fresh volumetric concrete mixed at your job site. Order exactly what you need—from 1 yard to as many as you like.</p>
+        <div class="cta">
+          <a class="btn" href="tel:+19565611288" data-call>Call Now</a>
+          <a class="btn secondary" href="#contact" data-quote>Get a Quote</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2 data-about-title>Why Valley Mix</h2>
+      <p data-about-body>We deliver exact-yard concrete with modern volumetric mixer trucks. No waste, no hot loads, and no 5AM concrete rush. Pay only for what you use.</p>
+    </section>
+
+    <section class="section">
+      <h2 data-services-title>Services</h2>
+      <div class="grid">
+        <div class="card"><h3 data-s1>Residential & Commercial Delivery</h3><small class="helper">From small pours to large projects.</small></div>
+        <div class="card"><h3 data-s2>Volumetric Concrete (2500–4500+ PSI)</h3><small class="helper">Order exact yardage with custom mixes.</small></div>
+        <div class="card"><h3 data-s3>Driveways, Slabs, Foundations, Sidewalks</h3><small class="helper">Reliable scheduling and on-time delivery.</small></div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2 data-contact-title>Contact</h2>
+      <p><strong data-address>6005 FM 1732, Brownsville, TX 78520</strong><br>
+      <a href="tel:+19565611288" data-phone>(956) 561-1288</a> · <a href="mailto:sales@valleymixconcrete.com" data-email>sales@valleymixconcrete.com</a></p>
+      <form id="quote-form" class="form">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <textarea name="message" rows="6" placeholder="Tell us about your pour (yardage, PSI, address, date/time)"></textarea>
+        <button class="btn" data-send type="submit">Open Email to Send</button>
+      </form>
+      <p class="sub" style="margin-top:8px">Prefer WhatsApp? Text us your address & yardage: <a href="https://wa.me/19565611288" target="_blank" rel="noopener">+1 (956) 561-1288</a></p>
+    </section>
+
+    <footer class="footer">
+      <small data-copy>© Valley Mix Concrete. All rights reserved.</small>
+    </footer>
   </div>
-  <p>Exact Yard. On Site. On Time.</p>
-  <p>Address: 6005 FM 1732, Brownsville, Texas 78520</p>
-  <p>Phone: (956) 561-1288 | Email: sales@valleymixconcrete.com</p>
-  <p>This is a placeholder page confirming your website files are working. The full site code will deploy correctly on Vercel.</p>
+  <script src="script.js"></script>
 </body>
 </html>

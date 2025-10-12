@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="82" viewBox="0 0 640 164">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="640" height="164" fill="#0f0f10" rx="22"/>
+  <g transform="translate(22,28)">
+    <path d="M0 72 L0 12 L20 12 L20 52 L54 12 L80 12 L80 72 L60 72 L60 34 L26 72 Z" fill="url(#g)"/>
+    <text x="98" y="28" font-family="Arial Black, Arial, sans-serif" font-size="28" fill="#ffffff">VALLEY MIX</text>
+    <text x="98" y="62" font-family="Arial Black, Arial, sans-serif" font-size="28" fill="#ffffff">CONCRETE</text>
+  </g>
+</svg>
