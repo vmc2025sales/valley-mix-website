@@ -1,3 +1,34 @@
+// ---- Valley Mix: Quote form wiring (Formspree) ----
+const FORM_ENDPOINT = 'https://formspree.io/f/xanpllbr';
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('quote-form');
+  const note = document.getElementById('notice') || document.querySelector('.notice');
+
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+
+    try {
+      const r = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (r.ok) {
+        if (note) note.textContent = 'Thanks! We received your request and will contact you shortly.';
+        form.reset();
+      } else {
+        if (note) note.textContent = 'Sorry—there was a problem sending your request. Please try again.';
+      }
+    } catch {
+      if (note) note.textContent = 'Network error—please try again in a moment.';
+    }
+  });
+});
 
 const FORM_ENDPOINT = 'https://formspree.io/f/xxxxxxxx'; // TODO: replace with your Formspree endpoint
 const T = {
