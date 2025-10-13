@@ -1,4 +1,5 @@
 
+const FORM_ENDPOINT = 'https://formspree.io/f/xxxxxxxx'; // TODO: replace with your Formspree endpoint
 const T = {
   en:{home:"Home",services:"Services",projects:"Projects",about:"About",faq:"FAQ",quote:"Get a Quote",
       hero_sub:"Fresh volumetric concrete mixed at your job site—order exactly what you need from 1 yard to any size.",
@@ -38,7 +39,15 @@ function init(){
   document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
   // form
   const form=document.getElementById("quote-form"); const note=document.getElementById("notice");
-  if(form){form.addEventListener("submit",e=>{e.preventDefault();note.textContent=T[current].success;form.reset();});}
+  if(form){form.addEventListener("submit", async e=>{
+      e.preventDefault();
+      const data = new FormData(form);
+      try{
+        const r = await fetch(FORM_ENDPOINT, {method:"POST", body:data, headers:{"Accept":"application/json"}});
+        if(r.ok){ note.textContent=T[current].success; form.reset(); }
+        else { note.textContent=T[current].error; }
+      }catch(err){ note.textContent=T[current].error; }
+    });}
 }
 document.addEventListener("DOMContentLoaded", init);
 
