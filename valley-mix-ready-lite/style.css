@@ -1,0 +1,16 @@
+:root{--bg:#f7f8fa;--panel:#fff;--ink:#0f172a;--muted:#475569;--line:#e5e7eb;--brand:#dc2626;}
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif}
+a{color:var(--brand);text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:1180px;margin:0 auto;padding:0 20px}.section{padding:48px 0}.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}
+.topbar{position:sticky;top:0;background:#fff8;backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--line);z-index:10}
+.topbar .wrap{display:flex;align-items:center;gap:16px;padding:10px 0}.brand img{height:96px;width:auto;border-radius:14px;background:#fff;padding:6px;border:1px solid var(--line)}
+.nav{margin-left:auto;display:flex;gap:16px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;gap:8px;background:var(--brand);color:#fff;border:none;border-radius:12px;padding:12px 18px;font-weight:600}
+.btn.alt{background:#111827;color:#fff}.hero{position:relative;min-height:56vh;display:flex;align-items:center}
+.hero .bg{position:absolute;inset:0;background:url('/assets/projects/hero-truck.jpg') center/cover no-repeat;filter:brightness(62%);} .hero .inner{position:relative;z-index:1}
+.badge img{height:160px;width:auto;border-radius:18px;background:#fff;padding:10px;border:1px solid var(--line);box-shadow:0 10px 40px #0002}
+h1{font-size:clamp(28px,4.2vw,56px);line-height:1.05;margin:16px 0 8px}h2{font-size:clamp(22px,3vw,34px);margin:0 0 16px}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}.gallery figure{margin:0;background:#f3f4f6;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.gallery img,.gallery video{display:block;width:100%;height:auto}.gallery figcaption{padding:10px 12px;color:var(--muted);font-weight:600}
+footer{padding:36px 0;color:var(--muted)}.notice{margin-top:8px;color:var(--muted)}
+@media (max-width:640px){.brand img{height:84px}.badge img{height:140px}}
