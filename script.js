@@ -1,50 +1,43 @@
 
 const T = {
-  en:{nav_home:"Home",nav_who:"Who We Are",nav_services:"Products & Services",nav_projects:"Projects",nav_quote:"Get a Quote",nav_apply:"Apply",
-      slogan:"Exact Yard. On Site. On Time.",sub:"Fresh volumetric concrete mixed at your job site — order exactly what you need from 1 yard to any size.",
-      call:"Call Now",quote_cta:"Get a Quote",k1:"On‑Site Volumetric Mixing",k2:"Exact‑Yard, Zero Waste",k3:"Same‑Day Scheduling",k4:"RGV & South Texas",
-      map_h1:"Service Area",projects_h1:"Recent Work",
-      form_h1:"Tell Us About Your Pour",form_intro:"We’ll confirm availability and schedule your pour.",
-      form_name:"Name",form_email:"Email",form_msg:"Details (address, date/time)",form_psi_label:"PSI",form_send:"Send Request",
-      success:"Request sent! We’ll be in touch shortly.",error:"Something went wrong. Please call (956) 561-1288.",
+  en:{home:"Home",services:"Services",projects:"Projects",about:"About",faq:"FAQ",quote:"Get a Quote",
+      hero_sub:"Fresh volumetric concrete mixed at your job site—order exactly what you need from 1 yard to any size.",
+      svc_h:"Products & Services",p1:"Residential & Commercial Slabs",p2:"Driveways, Sidewalks, Patios",p3:"Custom Mixes (2500–4500 PSI)",p4:"Pump Coordination",
+      how_h:"How It Works",s1:"Request a Quote",s2:"We Schedule & Mix On‑Site",s3:"Pay Only For What You Use",
+      proj_h:"Recent Work",area_h:"Service Area",form_h:"Tell Us About Your Pour",form_name:"Name",form_email:"Email",form_msg:"Details (address, date/time)",form_send:"Send Request",
       contact:"Contact",address:"6005 FM 1732, Brownsville, TX 78520",phone:"(956) 561-1288",email:"sales@valleymixconcrete.com",
-      copyright:"© Valley Mix Concrete. All rights reserved.",
-      cap_driveway:"Residential Driveway",cap_slab:"Commercial Slab",cap_sidewalks:"Sidewalks & Ramps",cap_patio:"Patio & Walkways",cap_foundation:"Foundations"},
-  es:{nav_home:"Inicio",nav_who:"Quiénes Somos",nav_services:"Productos y Servicios",nav_projects:"Proyectos",nav_quote:"Cotización",nav_apply:"Solicitar Empleo",
-      slogan:"Yarda Exacta. En Sitio. A Tiempo.",sub:"Concreto fresco mezclado en tu obra: pide exactamente lo que necesitas — desde 1 yarda hasta lo que requieras.",
-      call:"Llamar Ahora",quote_cta:"Solicitar Cotización",k1:"Mezcla Volumétrica en Sitio",k2:"Yarda Exacta, Cero Desperdicio",k3:"Programación Mismo Día",k4:"Valle del Río Grande y Sur de Texas",
-      map_h1:"Área de Servicio",projects_h1:"Trabajos Recientes",
-      form_h1:"Cuéntanos de tu Colado",form_intro:"Confirmamos disponibilidad y agendamos tu colado.",
-      form_name:"Nombre",form_email:"Correo electrónico",form_msg:"Detalles (dirección, fecha/hora)",form_psi_label:"PSI",form_send:"Enviar Solicitud",
-      success:"¡Enviado! Te contactamos en breve.",error:"Ocurrió un error. Por favor llama al (956) 561-1288.",
+      success:"Request sent! We’ll be in touch shortly.",error:"Something went wrong. Please call (956) 561-1288."},
+  es:{home:"Inicio",services:"Servicios",projects:"Proyectos",about:"Quiénes Somos",faq:"Preguntas",quote:"Cotización",
+      hero_sub:"Concreto fresco mezclado en tu obra: pide exactamente lo que necesitas — desde 1 yarda en adelante.",
+      svc_h:"Productos y Servicios",p1:"Losas Residenciales y Comerciales",p2:"Cocheras, Banquetas, Patios",p3:"Diseños 2500–4500 PSI",p4:"Coordinación con Bomba",
+      how_h:"Cómo Funciona",s1:"Solicita Cotización",s2:"Agendamos y Mezclamos en Sitio",s3:"Pagas Solo lo Usado",
+      proj_h:"Trabajos Recientes",area_h:"Área de Servicio",form_h:"Cuéntanos de tu Colado",form_name:"Nombre",form_email:"Correo",form_msg:"Detalles (dirección, fecha/hora)",form_send:"Enviar",
       contact:"Contacto",address:"6005 FM 1732, Brownsville, TX 78520",phone:"(956) 561-1288",email:"sales@valleymixconcrete.com",
-      copyright:"© Valley Mix Concrete. Todos los derechos reservados.",
-      cap_driveway:"Cochera Residencial",cap_slab:"Losa Comercial",cap_sidewalks:"Banquetas y Rampas",cap_patio:"Patio y Andadores",cap_foundation:"Cimentaciones"}
+      success:"¡Enviado! Te contactamos en breve.",error:"Ocurrió un error. Llama al (956) 561-1288."}
 };
+let current='en';
 function setLang(lang){
-  const t=T[lang]; document.documentElement.lang=lang;
+  current=lang; const t=T[lang];
   document.querySelectorAll("[data-i]").forEach(el=>{
     const k=el.getAttribute("data-i"); if(!k||!(k in t)) return;
     if(el.tagName==="INPUT"||el.tagName==="TEXTAREA") el.placeholder=t[k]; else el.textContent=t[k];
   });
-  document.querySelectorAll(".lang-toggle button").forEach(b=>b.classList.remove("active"));
-  document.querySelector(`.lang-toggle button[data-lang='${lang}']`).classList.add("active");
+  document.querySelectorAll(".lang button").forEach(b=>b.classList.remove("active"));
+  document.querySelector(`.lang button[data-lang='${lang}']`).classList.add("active");
 }
 function init(){
-  // set default lang key (will update after keys attach)
-  let current='en';
-  document.querySelectorAll(".lang-toggle button").forEach(b=>b.addEventListener("click",()=>{current=b.dataset.lang; setLang(current);}));
-  // menu hover + click (desktop + touch)
-  const topbar=document.querySelector(".topbar");
-  const burger=document.querySelector(".hamburger");
-  const navwrap=document.querySelector(".navwrap");
-  burger.setAttribute("aria-expanded","false");
-  function open(){ topbar.classList.add("menu-open"); burger.setAttribute("aria-expanded","true"); }
-  function close(){ topbar.classList.remove("menu-open"); burger.setAttribute("aria-expanded","false"); }
-  burger.addEventListener("click",(e)=>{ e.stopPropagation(); if(topbar.classList.contains("menu-open")) close(); else open(); });
-  document.addEventListener("click",(e)=>{ if(!topbar.contains(e.target)) close(); });
-  // nav labels
-  const keys=["nav_home","nav_who","nav_services","nav_projects","nav_quote","nav_apply"];
-  document.querySelectorAll(".navlinks a").forEach((a,i)=> a.setAttribute("data-i", keys[i]));
+  // label keys for both desktop & dropdown
+  const keys=["home","services","projects","about","faq","quote"];
+  document.querySelectorAll(".menu a, .dropdown a").forEach((a,i)=>a.setAttribute("data-i", keys[i]));
+  setLang(current);
+  // burger open/close
+  const header=document.querySelector(".header");
+  document.querySelector(".burger").addEventListener("click",e=>{e.stopPropagation();header.classList.toggle("open");});
+  document.addEventListener("click",e=>{if(!header.contains(e.target)) header.classList.remove("open");});
+  // lang
+  document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+  // form
+  const form=document.getElementById("quote-form"); const note=document.getElementById("notice");
+  if(form){form.addEventListener("submit",e=>{e.preventDefault();note.textContent=T[current].success;form.reset();});}
 }
 document.addEventListener("DOMContentLoaded", init);
