@@ -57,3 +57,28 @@ figcaption{font-size:14px;color:#475569;margin-top:6px}
   .gallery{grid-template-columns:1fr}
   .grid-3,.grid-2,.steps{grid-template-columns:1fr}
 }
+
+/* Floating WhatsApp & Call */
+.fab{position:fixed;right:18px;bottom:90px;z-index:120;display:flex;flex-direction:column;gap:10px}
+.fab a{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;color:#fff;box-shadow:0 10px 20px rgba(0,0,0,.2)}
+.fab .call{background:#16a34a}
+.fab .wa{background:#22c55e}
+.mobile-stick{position:fixed;left:0;right:0;bottom:0;background:#ffffffee;backdrop-filter:blur(6px);border-top:1px solid var(--border);z-index:110;display:none}
+.mobile-stick .container{display:flex;gap:10px;padding:10px}
+.mobile-stick a{flex:1;text-align:center}
+@media(max-width:980px){.mobile-stick{display:block}}
+
+/* Testimonial slider */
+.slider{position:relative;overflow:hidden;border:1px solid var(--border);border-radius:16px;background:#fff}
+.slide{display:none;padding:20px}
+.slide.active{display:block}
+.slider .nav{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
+.slider button{pointer-events:auto;border:none;background:#fff;border:1px solid var(--border);width:36px;height:36px;border-radius:50%;cursor:pointer;margin:0 8px}
+.quote{font-style:italic;color:#475569}
+
+/* FAQ accordion */
+.faq{display:grid;gap:10px}
+.faq-item{border:1px solid var(--border);border-radius:12px;background:#fff}
+.faq-q{padding:14px;cursor:pointer;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+.faq-a{padding:0 14px 14px 14px;display:none;color:#475569}
+.faq-item.open .faq-a{display:block}
